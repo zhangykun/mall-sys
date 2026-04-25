@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(\"C:/Program Files/Java/jdk-24/bin/java.exe\" -version)",
+      "Bash(\"C:/Program Files/Java/jdk-24/bin/javac.exe\" -version)",
+      "Bash(dir \"D:\\\\Program Files\\\\apache-maven*\\\\bin\\\\mvn.cmd\")",
+      "Bash(dir \"D:\\\\apache-maven*\\\\bin\\\\mvn.cmd\")",
+      "Bash(./mvnw.cmd clean *)",
+      "Bash(./mvnw.cmd help:evaluate *)",
+      "Bash(netstat -ano)",
+      "Bash(findstr :8080)",
+      "Bash(taskkill *)",
+      "Bash(cmd *)",
+      "Bash(./mvnw.cmd spring-boot:run -DskipTests)",
+      "Bash(./mvnw.cmd idea:idea -DskipTests)",
+      "Bash(mvn dependency:resolve -DincludeArtifactIds=mybatis-plus-spring-boot3-starter)",
+      "Bash(./mvnw dependency:resolve -DincludeArtifactIds=mybatis-plus-spring-boot3-starter)",
+      "Bash(jar tf *)",
+      "Bash(grep \"inner/.*\\\\.class$\")",
+      "Bash(grep -v '\\\\$')",
+      "Bash(grep \"Interceptor.*\\\\.class$\")",
+      "Bash(mysql *)"
+    ]
+  }
+}

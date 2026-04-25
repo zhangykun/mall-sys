@@ -1,0 +1,50 @@
+# ==========================================
+# 商城管理后台 - 主配置文件
+# ==========================================
+
+# ============ 服务器配置 ============
+server:
+  port: 8080
+
+# ============ Spring 配置 ============
+spring:
+  application:
+    name: mall-sys
+
+  # 多环境配置
+  profiles:
+    active: dev
+
+  # ============ Jackson 序列化配置 ============
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+
+# ============ MyBatis-Plus 配置 ============
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: com.mall.modules.*.entity
+  global-config:
+    db-config:
+      id-type: auto
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+
+# ============ JWT 配置 ============
+jwt:
+  secret: mall-sys-secret-key-2024-very-long-key-for-security
+  expiration: 86400000
+  header: Authorization
+  prefix: Bearer
+
+# ============ API 文档配置 ============
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true

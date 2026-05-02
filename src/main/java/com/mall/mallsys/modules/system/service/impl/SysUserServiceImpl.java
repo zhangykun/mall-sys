@@ -90,6 +90,7 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         // 7. 构建返回结果
         LoginResponse response = new LoginResponse();
         response.setToken(token);
+        response.setUserId(user.getId());
         response.setUsername(user.getUsername());
         response.setNickname(user.getNickname());
         response.setAvatar(user.getAvatar());
@@ -129,9 +130,13 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserMapper, SysUser> impl
         boolean isSuperAdmin = roles.stream()
                 .anyMatch(r -> "super_admin".equals(r.getRoleKey()));
         if (isSuperAdmin) {
-            List<String> allPermissions = new ArrayList<>();
-            allPermissions.add("*:*:*");
-            return allPermissions;
+            // 查询所有菜单权限，而非只返回 "*:*:*"（Spring Security 不做通配符匹配）
+            List<SysMenu> allMenus = sysMenuService.list();
+            return allMenus.stream()
+                    .map(SysMenu::getPermission)
+                    .filter(p -> p != null && !p.isEmpty())
+                    .distinct()
+                    .collect(Collectors.toList());
         }
         return baseMapper.selectPermissionsByUserId(userId);
     }

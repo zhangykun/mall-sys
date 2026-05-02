@@ -25,7 +25,8 @@ public class SysMenuServiceImpl extends ServiceImpl<SysMenuMapper, SysMenu> impl
     /**
      * 构建菜单树
      */
-    private List<SysMenu> buildMenuTree(List<SysMenu> menus, Long parentId) {
+    @Override
+    public List<SysMenu> buildMenuTree(List<SysMenu> menus, Long parentId) {
         return menus.stream()
                 .filter(m -> m.getParentId().equals(parentId))
                 .map(menu -> {

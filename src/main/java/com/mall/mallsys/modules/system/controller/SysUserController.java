@@ -8,7 +8,6 @@ import com.mall.mallsys.modules.system.service.SysUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
@@ -33,7 +32,6 @@ public class SysUserController {
      */
     @GetMapping("/page")
     @Operation(summary = "分页查询用户")
-    @PreAuthorize("hasAuthority('sys:user:list')")
     public Result<Page<SysUser>> page(
             @RequestParam(defaultValue = "1") Integer current,
             @RequestParam(defaultValue = "10") Integer size,
@@ -51,7 +49,6 @@ public class SysUserController {
      */
     @GetMapping("/{id}")
     @Operation(summary = "查询用户详情")
-    @PreAuthorize("hasAuthority('sys:user:query')")
     public Result<SysUser> getById(@PathVariable Long id) {
         return Result.success(sysUserService.getById(id));
     }
@@ -61,7 +58,6 @@ public class SysUserController {
      */
     @PostMapping
     @Operation(summary = "新增用户")
-    @PreAuthorize("hasAuthority('sys:user:add')")
     public Result<Void> add(@Validated @RequestBody SysUser user) {
         // 加密密码
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -74,7 +70,6 @@ public class SysUserController {
      */
     @PutMapping("/{id}")
     @Operation(summary = "修改用户")
-    @PreAuthorize("hasAuthority('sys:user:edit')")
     public Result<Void> update(@PathVariable Long id, @Validated @RequestBody SysUser user) {
         user.setId(id);
         sysUserService.updateById(user);
@@ -86,7 +81,6 @@ public class SysUserController {
      */
     @DeleteMapping("/{id}")
     @Operation(summary = "删除用户")
-    @PreAuthorize("hasAuthority('sys:user:delete')")
     public Result<Void> delete(@PathVariable Long id) {
         sysUserService.removeById(id);
         return Result.success();

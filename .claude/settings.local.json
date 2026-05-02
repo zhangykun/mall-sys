@@ -19,7 +19,9 @@
       "Bash(grep \"inner/.*\\\\.class$\")",
       "Bash(grep -v '\\\\$')",
       "Bash(grep \"Interceptor.*\\\\.class$\")",
-      "Bash(mysql *)"
+      "Bash(mysql *)",
+      "Bash(./mvnw compile *)",
+      "Bash(npx vite *)"
     ]
   }
 }

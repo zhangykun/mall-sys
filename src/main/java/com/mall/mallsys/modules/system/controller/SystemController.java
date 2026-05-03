@@ -1,5 +1,6 @@
 package com.mall.mallsys.modules.system.controller;
 
+import com.mall.mallsys.common.annotation.Log;
 import com.mall.mallsys.common.result.Result;
 import com.mall.mallsys.modules.system.entity.SysUser;
 import com.mall.mallsys.modules.system.dto.LoginRequest;
@@ -39,6 +40,7 @@ public class SystemController {
     /**
      * 用户登出
      */
+    @Log("用户登出")
     @PostMapping("/logout")
     @Operation(summary = "用户登出")
     public Result<Void> logout(@RequestHeader("Authorization") String authorization) {

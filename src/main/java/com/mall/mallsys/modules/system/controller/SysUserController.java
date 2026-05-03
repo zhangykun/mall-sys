@@ -2,6 +2,7 @@ package com.mall.mallsys.modules.system.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.mall.mallsys.common.annotation.Log;
 import com.mall.mallsys.common.result.Result;
 import com.mall.mallsys.modules.system.entity.SysUser;
 import com.mall.mallsys.modules.system.service.SysUserService;
@@ -56,6 +57,7 @@ public class SysUserController {
     /**
      * 新增用户
      */
+    @Log("新增用户")
     @PostMapping
     @Operation(summary = "新增用户")
     public Result<Void> add(@Validated @RequestBody SysUser user) {
@@ -68,6 +70,7 @@ public class SysUserController {
     /**
      * 修改用户
      */
+    @Log("修改用户")
     @PutMapping("/{id}")
     @Operation(summary = "修改用户")
     public Result<Void> update(@PathVariable Long id, @Validated @RequestBody SysUser user) {
@@ -79,6 +82,7 @@ public class SysUserController {
     /**
      * 删除用户
      */
+    @Log("删除用户")
     @DeleteMapping("/{id}")
     @Operation(summary = "删除用户")
     public Result<Void> delete(@PathVariable Long id) {

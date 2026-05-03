@@ -1,5 +1,6 @@
 package com.mall.mallsys.modules.system.controller;
 
+import com.mall.mallsys.common.annotation.Log;
 import com.mall.mallsys.common.result.Result;
 import com.mall.mallsys.modules.system.service.SysMenuService;
 import com.mall.mallsys.modules.system.entity.SysMenu;
@@ -50,6 +51,7 @@ public class SysMenuController {
     /**
      * 新增菜单
      */
+    @Log("新增菜单")
     @PostMapping
     @Operation(summary = "新增菜单")
     public Result<Void> add(@Validated @RequestBody SysMenu menu) {
@@ -60,6 +62,7 @@ public class SysMenuController {
     /**
      * 修改菜单
      */
+    @Log("修改菜单")
     @PutMapping("/{id}")
     @Operation(summary = "修改菜单")
     public Result<Void> update(@PathVariable Long id, @Validated @RequestBody SysMenu menu) {
@@ -71,6 +74,7 @@ public class SysMenuController {
     /**
      * 删除菜单
      */
+    @Log("删除菜单")
     @DeleteMapping("/{id}")
     @Operation(summary = "删除菜单")
     public Result<Void> delete(@PathVariable Long id) {

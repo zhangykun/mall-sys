@@ -56,6 +56,8 @@ public class SecurityConfig {
                         // 放行 Swagger/API 文档
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html",
                                 "/v3/api-docs/**", "/webjars/**").permitAll()
+                        // 放行静态资源
+                        .requestMatchers("/upload/**").permitAll()
                         // 放行 OPTIONS 请求
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         // 其他请求需要认证
